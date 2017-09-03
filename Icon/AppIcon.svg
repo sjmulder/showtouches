@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024">
+	<defs>
+		<linearGradient id="rectFill" x1="0" x2="0" y1="0" y2="1">
+			<stop offset="0%" stop-color="#444" />
+			<stop offset="100%" stop-color="#111" />
+		</linearGradient>
+	</defs>
+	<rect width="1024" height="1024" fill="url(#rectFill)" />
+	<g transform="translate(560, 560)">
+		<g transform="rotate(-10)">
+			<g transform="rotate(-2)">
+				<line x1="-1024" x2="1024" stroke="black" stroke-width="10" stroke-opacity="0.3" />
+				<line y1="-1024" y2="1024" stroke="black" stroke-width="10" stroke-opacity="0.3" />
+			</g>
+			<circle r="160" fill="#ddd" stroke="#aaa" stroke-width="20" />
+			<line x1="-1024" x2="1024" stroke="#ddd" stroke-width="10" />
+			<line y1="-1024" y2="1024" stroke="#ddd" stroke-width="10" />
+		</g>
+	</g>
+</svg>
