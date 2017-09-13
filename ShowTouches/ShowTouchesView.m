@@ -146,7 +146,7 @@ static BOOL _haveAltitudeAngle;
 		CGContextStrokeLineSegments(ctx, &linepts[0], 2);
 		CGContextStrokeLineSegments(ctx, &linepts[2], 2);
 		
-		/* radius circle, only if supported */
+		/* radius circle */
 		if (rd) {
 			CGContextSetRGBFillColor(ctx, r, g, b, 1);
 			CGContextFillEllipseInRect(ctx, CGRectMake(-rd, -rd, rd*2, rd*2));
