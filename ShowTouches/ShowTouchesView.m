@@ -135,18 +135,16 @@ static BOOL _haveAltitudeAngle;
 				CGContextSaveGState(ctx);
 				CGContextRotateCTM(ctx, angle);
 				CGContextSetGrayStrokeColor(ctx, 0, 1);
-				CGContextAddLines(ctx, &linepts[0], 2);
-				CGContextAddLines(ctx, &linepts[2], 2);
-				CGContextStrokePath(ctx);
+				CGContextStrokeLineSegments(ctx, &linepts[0], 2);
+				CGContextStrokeLineSegments(ctx, &linepts[2], 2);
 				CGContextRestoreGState(ctx);
 			}
 		}
 		
 		/* cross line indicating azimuth angle */
 		CGContextSetRGBStrokeColor(ctx, r, g, b, 1);
-		CGContextAddLines(ctx, &linepts[0], 2);
-		CGContextAddLines(ctx, &linepts[2], 2);
-		CGContextStrokePath(ctx);
+		CGContextStrokeLineSegments(ctx, &linepts[0], 2);
+		CGContextStrokeLineSegments(ctx, &linepts[2], 2);
 		
 		/* radius circle, only if supported */
 		if (rd) {
