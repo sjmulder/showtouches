@@ -129,14 +129,17 @@ static BOOL _haveAltitudeAngle;
 			CGContextRotateCTM(ctx, [touch azimuthAngleInView:self]);
 		
 		if (_haveAltitudeAngle) {
-			/* shadow cross line indicating altitude angle */
-			CGContextSaveGState(ctx);
-			CGContextRotateCTM(ctx, [touch altitudeAngle]);
-			CGContextSetGrayStrokeColor(ctx, 0, 1);
-			CGContextAddLines(ctx, &linepts[0], 2);
-			CGContextAddLines(ctx, &linepts[2], 2);
-			CGContextStrokePath(ctx);
-			CGContextRestoreGState(ctx);
+			float angle = [touch altitudeAngle];
+			if (angle < M_PI/2-0.005 || angle > M_PI/2+0.005) {
+				/* shadow cross line indicating altitude angle */
+				CGContextSaveGState(ctx);
+				CGContextRotateCTM(ctx, angle);
+				CGContextSetGrayStrokeColor(ctx, 0, 1);
+				CGContextAddLines(ctx, &linepts[0], 2);
+				CGContextAddLines(ctx, &linepts[2], 2);
+				CGContextStrokePath(ctx);
+				CGContextRestoreGState(ctx);
+			}
 		}
 		
 		/* cross line indicating azimuth angle */
