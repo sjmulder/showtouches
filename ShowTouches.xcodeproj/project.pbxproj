@@ -16,7 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		363EB2D91F5C7913005B8658 /* AppIcon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AppIcon.svg; sourceTree = "<group>"; };
 		36AE8DB81F5C1EF40072FD94 /* ShowTouches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowTouches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36AE8DBC1F5C1EF40072FD94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		36AE8DBE1F5C1EF40072FD94 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -69,7 +68,6 @@
 				36AE8DC91F5C1EF40072FD94 /* LaunchScreen.storyboard */,
 				36AE8DCC1F5C1EF40072FD94 /* Info.plist */,
 				36AE8DDD1F5C3C530072FD94 /* InfoPlist.strings */,
-				363EB2D91F5C7913005B8658 /* AppIcon.svg */,
 			);
 			path = ShowTouches;
 			sourceTree = "<group>";
