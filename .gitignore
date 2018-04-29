@@ -1,4 +1,5 @@
 *.swp
 *.swo
+*.xcuserdatad
 .DS_Store
 xcuserdata
