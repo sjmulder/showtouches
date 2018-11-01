@@ -98,7 +98,7 @@
 		36AE8DB01F5C1EF40072FD94 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Sijmen J. Mulder";
 				TargetAttributes = {
 					36AE8DB71F5C1EF40072FD94 = {
