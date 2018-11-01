@@ -47,6 +47,7 @@
 				36AE8DB91F5C1EF40072FD94 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		36AE8DB91F5C1EF40072FD94 /* Products */ = {
 			isa = PBXGroup;
