@@ -43,5 +43,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>The headphone jack is used to communicate with a SonarPen, when connected.</string>
 </dict>
 </plist>

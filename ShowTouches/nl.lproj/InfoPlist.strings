@@ -1,1 +1,2 @@
 "CFBundleName" = "Aanrakingen";
+"NSMicrophoneUsageDescription" = "De koptelefoonaansluiting wordt gebruikt om met de SonarPen te communiceren, indien aangesloten.";

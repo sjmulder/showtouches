@@ -1,5 +1,6 @@
 #import "ShowTouchesView.h"
 #include <math.h>
+#import "WTSonarPenDriver.h"
 
 #define CLAMP(f) (fmax(0, fmin(1, f)))
 
@@ -8,8 +9,10 @@ static BOOL _haveForce;
 static BOOL _haveAzimuthAngleInView;
 static BOOL _haveAltitudeAngle;
 
-@interface ShowTouchesView () {
+@interface ShowTouchesView () <WTSonarPenDriverDelegate>  {
 	NSMutableSet *_touches;
+	WTSonarPenDriver *_sonarPen;
+	NSTimer *_sonarPenButtonTimer;
 }
 
 @end
@@ -29,6 +32,9 @@ static BOOL _haveAltitudeAngle;
 	if (!(self = [super initWithFrame:rect]))
 		return nil;
 	
+	_sonarPen = nil;
+	_sonarPenButtonTimer = nil;
+
 	_touches = [NSMutableSet new];
 	[self setBackgroundColor:[UIColor colorWithWhite:.15 alpha:1]];
 	[self setMultipleTouchEnabled:YES];
@@ -36,12 +42,51 @@ static BOOL _haveAltitudeAngle;
 	[self setIsAccessibilityElement:YES];
 	[self setAccessibilityTraits:UIAccessibilityTraitAllowsDirectInteraction];
 	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"EnableSonarPen"])
+		[self enableSonarPen];
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:NSUserDefaultsDidChangeNotification object:nil];
+	
 	return self;
+}
+
+- (void)dealloc
+{
+	if (_sonarPen)
+		[_sonarPen setDelegate:nil];
+
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setFrame:(CGRect)frame
 {
 	[super setFrame:frame];
+}
+
+- (void)enableSonarPen
+{
+	if (!_sonarPen) {
+		_sonarPen = [[WTSonarPenDriver alloc] initWithApplication:[UIApplication sharedApplication]];
+		[_sonarPen setDelegate:self];
+		[_sonarPen start];
+	}
+}
+
+- (void)disableSonarPen
+{
+	if (_sonarPen) {
+		[_sonarPen stop];
+		[_sonarPen setDelegate:self];
+		_sonarPen = nil;
+	}
+}
+
+- (void)defaultsDidChange:(NSNotification *)notification
+{
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"EnableSonarPen"])
+		[self enableSonarPen];
+	else
+		[self disableSonarPen];
 }
 
 - (void)announceTouches
@@ -76,16 +121,42 @@ static BOOL _haveAltitudeAngle;
 	[self announceTouches];
 }
 
+- (void)sonarPenButtonPressed:(WTSonarPenDriver *)driver
+{
+	[self setNeedsDisplay];
+	
+	if (_sonarPenButtonTimer)
+		[_sonarPenButtonTimer invalidate];
+	
+	_sonarPenButtonTimer = [NSTimer scheduledTimerWithTimeInterval:.05 target:self selector:@selector(sonarPenButtonTimerDidFire) userInfo:nil repeats:YES];
+}
+
+- (void)sonarPenButtonTimerDidFire
+{
+	if (!_sonarPen || ![_sonarPen isButtonDown]) {
+		[_sonarPenButtonTimer invalidate];
+		_sonarPenButtonTimer = nil;
+
+		[self setNeedsDisplay];
+	}
+}
+
 - (void)drawRect:(CGRect)rect
 {
 	[super drawRect:rect];
 
-	if (!_touches)
-		return;
-	
 	CGRect bounds = [self bounds];
 	CGContextRef ctx = UIGraphicsGetCurrentContext();
 	
+	/* check timer instead of state for minimum flash time */
+	if (_sonarPenButtonTimer) {
+		CGContextSetGrayFillColor(ctx, 0.3, 1.0);
+		CGContextFillRect(ctx, bounds);
+	}
+
+	if (!_touches)
+		return;
+
 	BOOL haveForce = _haveForce &&
 		[[self traitCollection] forceTouchCapability] == UIForceTouchCapabilityAvailable;
 	
@@ -102,25 +173,29 @@ static BOOL _haveAltitudeAngle;
 			[touch preciseLocationInView:self] :
 			[touch locationInView:self];
 		
-		float r, g, b;
-		if (haveForce) {
-			float force = force = [touch force];
-			/* redder for force>1, bluer for force <1 */
-			r = CLAMP(force);
-			g = CLAMP(force<1 ? force : 2-force);
-			b = CLAMP(2-force);
-		} else {
-			r = g = b = 1;
-		}
-		
-		CGContextSaveGState(ctx);
-		CGContextTranslateCTM(ctx, pos.x+.5, pos.y+.5);
-		
 		float rd = [touch majorRadius];
 		float rdt = [touch majorRadiusTolerance];
 		if (!rd)
 			rd = 20;
 		
+		BOOL isSonarPen = rd < 20.0 && _sonarPen && [_sonarPen isPenDown];
+
+		float force;
+		if (isSonarPen)
+			force = [_sonarPen pressure] * 2.5;
+		else if (haveForce)
+			force = [touch force];
+		else
+			force = 1;
+
+		/* redder for force>1, bluer for force <1 */
+		float r = CLAMP(force);
+		float g = CLAMP(force<1 ? force : 2-force);
+		float b = CLAMP(2-force);
+
+		CGContextSaveGState(ctx);
+		CGContextTranslateCTM(ctx, pos.x+.5, pos.y+.5);
+
 		/* shadow circle */
 		CGContextSetRGBFillColor(ctx, r, g, b, .3);
 		CGContextFillEllipseInRect(ctx, CGRectMake(-rd-rdt, -rd-rdt, (rd+rdt)*2, (rd+rdt)*2));

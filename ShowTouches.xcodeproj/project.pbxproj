@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		363FD845218BB62200AB3CD6 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363FD844218BB62200AB3CD6 /* Accelerate.framework */; };
+		363FD847218BB63200AB3CD6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363FD846218BB63200AB3CD6 /* AudioToolbox.framework */; };
+		363FD849218BB63D00AB3CD6 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363FD848218BB63D00AB3CD6 /* MediaPlayer.framework */; };
+		363FD851218BB74E00AB3CD6 /* libSonarPenUniversal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 363FD850218BB74E00AB3CD6 /* libSonarPenUniversal.a */; };
+		363FD855218BB93E00AB3CD6 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 363FD854218BB93E00AB3CD6 /* libc++.tbd */; };
+		363FD857218BCC5300AB3CD6 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 363FD856218BCC5300AB3CD6 /* Settings.bundle */; };
 		36AE8DBD1F5C1EF40072FD94 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AE8DBC1F5C1EF40072FD94 /* main.m */; };
 		36AE8DC01F5C1EF40072FD94 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AE8DBF1F5C1EF40072FD94 /* AppDelegate.m */; };
 		36AE8DC81F5C1EF40072FD94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36AE8DC71F5C1EF40072FD94 /* Assets.xcassets */; };
@@ -16,6 +22,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		363FD844218BB62200AB3CD6 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		363FD846218BB63200AB3CD6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		363FD848218BB63D00AB3CD6 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		363FD850218BB74E00AB3CD6 /* libSonarPenUniversal.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libSonarPenUniversal.a; sourceTree = "<group>"; };
+		363FD852218BB78500AB3CD6 /* WTSonarPenTouchesHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WTSonarPenTouchesHandler.h; path = include/WTSonarPenTouchesHandler.h; sourceTree = "<group>"; };
+		363FD853218BB78500AB3CD6 /* WTSonarPenDriver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = WTSonarPenDriver.h; path = include/WTSonarPenDriver.h; sourceTree = "<group>"; };
+		363FD854218BB93E00AB3CD6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		363FD856218BCC5300AB3CD6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		36AE8DB81F5C1EF40072FD94 /* ShowTouches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowTouches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36AE8DBC1F5C1EF40072FD94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		36AE8DBE1F5C1EF40072FD94 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -34,17 +48,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				363FD855218BB93E00AB3CD6 /* libc++.tbd in Frameworks */,
+				363FD849218BB63D00AB3CD6 /* MediaPlayer.framework in Frameworks */,
+				363FD847218BB63200AB3CD6 /* AudioToolbox.framework in Frameworks */,
+				363FD851218BB74E00AB3CD6 /* libSonarPenUniversal.a in Frameworks */,
+				363FD845218BB62200AB3CD6 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		363FD843218BB62200AB3CD6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				363FD854218BB93E00AB3CD6 /* libc++.tbd */,
+				363FD848218BB63D00AB3CD6 /* MediaPlayer.framework */,
+				363FD846218BB63200AB3CD6 /* AudioToolbox.framework */,
+				363FD844218BB62200AB3CD6 /* Accelerate.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		363FD84C218BB74E00AB3CD6 /* SonarPen */ = {
+			isa = PBXGroup;
+			children = (
+				363FD853218BB78500AB3CD6 /* WTSonarPenDriver.h */,
+				363FD852218BB78500AB3CD6 /* WTSonarPenTouchesHandler.h */,
+				363FD850218BB74E00AB3CD6 /* libSonarPenUniversal.a */,
+			);
+			path = SonarPen;
+			sourceTree = "<group>";
+		};
 		36AE8DAF1F5C1EF40072FD94 = {
 			isa = PBXGroup;
 			children = (
 				36AE8DBA1F5C1EF40072FD94 /* ShowTouches */,
+				363FD84C218BB74E00AB3CD6 /* SonarPen */,
 				36AE8DB91F5C1EF40072FD94 /* Products */,
+				363FD843218BB62200AB3CD6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 			usesTabs = 1;
@@ -69,6 +111,7 @@
 				36AE8DC91F5C1EF40072FD94 /* LaunchScreen.storyboard */,
 				36AE8DCC1F5C1EF40072FD94 /* Info.plist */,
 				36AE8DDD1F5C3C530072FD94 /* InfoPlist.strings */,
+				363FD856218BCC5300AB3CD6 /* Settings.bundle */,
 			);
 			path = ShowTouches;
 			sourceTree = "<group>";
@@ -133,6 +176,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				363FD857218BCC5300AB3CD6 /* Settings.bundle in Resources */,
 				36AE8DCB1F5C1EF40072FD94 /* LaunchScreen.storyboard in Resources */,
 				36AE8DDB1F5C3C530072FD94 /* InfoPlist.strings in Resources */,
 				36AE8DC81F5C1EF40072FD94 /* Assets.xcassets in Resources */,
@@ -226,7 +270,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/SonarPen/include\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/SonarPen\"";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -279,7 +325,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/SonarPen/include\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/SonarPen\"";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -294,6 +342,10 @@
 				DEVELOPMENT_TEAM = FX2TJYZ3GE;
 				INFOPLIST_FILE = ShowTouches/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SonarPen",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.sjmulder.ShowTouches-9e68";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -306,6 +358,10 @@
 				DEVELOPMENT_TEAM = FX2TJYZ3GE;
 				INFOPLIST_FILE = ShowTouches/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SonarPen",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "nl.sjmulder.ShowTouches-9e68";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
