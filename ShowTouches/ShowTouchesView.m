@@ -34,8 +34,8 @@ static BOOL _haveAltitudeAngle;
 	
 	_sonarPen = nil;
 	_sonarPenButtonTimer = nil;
-
 	_touches = [NSMutableSet new];
+
 	[self setBackgroundColor:[UIColor colorWithWhite:.15 alpha:1]];
 	[self setMultipleTouchEnabled:YES];
 	[self setUserInteractionEnabled:YES];
@@ -45,7 +45,11 @@ static BOOL _haveAltitudeAngle;
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"EnableSonarPen"])
 		[self enableSonarPen];
 	
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(defaultsDidChange:) name:NSUserDefaultsDidChangeNotification object:nil];
+	[[NSNotificationCenter defaultCenter]
+	    addObserver:self
+	    selector:@selector(defaultsDidChange:)
+	    name:NSUserDefaultsDidChangeNotification
+	    object:nil];
 	
 	return self;
 }
@@ -91,8 +95,9 @@ static BOOL _haveAltitudeAngle;
 
 - (void)announceTouches
 {
-	UIAccessibilityPostNotification(UIAccessibilityAnnouncementNotification,
-		[NSString stringWithFormat:@"%u", (unsigned)[_touches count]]);
+	UIAccessibilityPostNotification(
+	    UIAccessibilityAnnouncementNotification,
+	    [NSString stringWithFormat:@"%u", (unsigned)[_touches count]]);
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
@@ -128,7 +133,12 @@ static BOOL _haveAltitudeAngle;
 	if (_sonarPenButtonTimer)
 		[_sonarPenButtonTimer invalidate];
 	
-	_sonarPenButtonTimer = [NSTimer scheduledTimerWithTimeInterval:.05 target:self selector:@selector(sonarPenButtonTimerDidFire) userInfo:nil repeats:YES];
+	_sonarPenButtonTimer = [NSTimer
+	    scheduledTimerWithTimeInterval:.05
+	    target:self
+	    selector:@selector(sonarPenButtonTimerDidFire)
+	    userInfo:nil
+	    repeats:YES];
 }
 
 - (void)sonarPenButtonTimerDidFire
@@ -158,7 +168,7 @@ static BOOL _haveAltitudeAngle;
 		return;
 
 	BOOL haveForce = _haveForce &&
-		[[self traitCollection] forceTouchCapability] == UIForceTouchCapabilityAvailable;
+	    [[self traitCollection] forceTouchCapability] == UIForceTouchCapabilityAvailable;
 	
 	/* coordinates for cross line points; extending to max(width, height) in every
 	   direction to account for rotation */
@@ -180,13 +190,10 @@ static BOOL _haveAltitudeAngle;
 		
 		BOOL isSonarPen = rd < 20.0 && _sonarPen && [_sonarPen isPenDown];
 
-		float force;
-		if (isSonarPen)
-			force = [_sonarPen pressure] * 2.5;
-		else if (haveForce)
-			force = [touch force];
-		else
-			force = 1;
+		float force =
+		    isSonarPen ? [_sonarPen pressure] * 2.5 :
+		    haveForce ? [touch force] :
+		    1;
 
 		/* redder for force>1, bluer for force <1 */
 		float r = CLAMP(force);
