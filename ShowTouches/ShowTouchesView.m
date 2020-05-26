@@ -2,7 +2,10 @@
 
 #import "ShowTouchesView.h"
 #include <math.h>
-#import "WTSonarPenDriver.h"
+
+#ifndef NO_SONARPEN
+# import "WTSonarPenDriver.h"
+#endif
 
 #define CLAMP(f) (fmax(0, fmin(1, f)))
 
@@ -11,13 +14,20 @@ static BOOL _haveForce;
 static BOOL _haveAzimuthAngleInView;
 static BOOL _haveAltitudeAngle;
 
-@interface ShowTouchesView () <WTSonarPenDriverDelegate>  {
+@interface ShowTouchesView () {
 	NSMutableSet *_touches;
-	WTSonarPenDriver *_sonarPen;
 	NSTimer *_sonarPenButtonTimer;
 }
 
 @end
+
+#ifndef NO_SONARPEN
+@interface ShowTouchesView () <WTSonarPenDriverDelegate>  {
+	WTSonarPenDriver *_sonarPen;
+}
+
+@end
+#endif /* NO_SONARPEN */
 
 @implementation ShowTouchesView
 
@@ -33,8 +43,7 @@ static BOOL _haveAltitudeAngle;
 {
 	if (!(self = [super initWithFrame:rect]))
 		return nil;
-	
-	_sonarPen = nil;
+
 	_sonarPenButtonTimer = nil;
 	_touches = [NSMutableSet new];
 
@@ -43,23 +52,29 @@ static BOOL _haveAltitudeAngle;
 	[self setUserInteractionEnabled:YES];
 	[self setIsAccessibilityElement:YES];
 	[self setAccessibilityTraits:UIAccessibilityTraitAllowsDirectInteraction];
-	
+
+#ifndef NO_SONARPEN
+	_sonarPen = nil;
+
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:@"EnableSonarPen"])
 		[self enableSonarPen];
-	
+
 	[[NSNotificationCenter defaultCenter]
 	    addObserver:self
 	    selector:@selector(defaultsDidChange:)
 	    name:NSUserDefaultsDidChangeNotification
 	    object:nil];
-	
+#endif
+
 	return self;
 }
 
 - (void)dealloc
 {
+#ifndef NO_SONARPEN
 	if (_sonarPen)
 		[_sonarPen setDelegate:nil];
+#endif
 
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
@@ -69,6 +84,7 @@ static BOOL _haveAltitudeAngle;
 	[super setFrame:frame];
 }
 
+#ifndef NO_SONARPEN
 - (void)enableSonarPen
 {
 	if (!_sonarPen) {
@@ -94,6 +110,7 @@ static BOOL _haveAltitudeAngle;
 	else
 		[self disableSonarPen];
 }
+#endif /* NO_SONARPEN */
 
 - (void)announceTouches
 {
@@ -128,6 +145,7 @@ static BOOL _haveAltitudeAngle;
 	[self announceTouches];
 }
 
+#ifndef NO_SONARPEN
 - (void)sonarPenButtonPressed:(WTSonarPenDriver *)driver
 {
 	[self setNeedsDisplay];
@@ -152,6 +170,7 @@ static BOOL _haveAltitudeAngle;
 		[self setNeedsDisplay];
 	}
 }
+#endif /* NO_SONARPEN */
 
 - (void)drawRect:(CGRect)rect
 {
@@ -189,13 +208,13 @@ static BOOL _haveAltitudeAngle;
 		float rdt = [touch majorRadiusTolerance];
 		if (!rd)
 			rd = 20;
-		
-		BOOL isSonarPen = rd < 20.0 && _sonarPen && [_sonarPen isPenDown];
 
-		float force =
-		    isSonarPen ? [_sonarPen pressure] * 2.5 :
-		    haveForce ? [touch force] :
-		    1;
+		float force = haveForce ? [touch force] : 1;
+
+#ifndef NO_SONARPEN
+		if (rd < 20.0 && _sonarPen && [_sonarPen isPenDown])
+			force = [_sonarPen pressure] * 2.5;
+#endif
 
 		/* redder for force>1, bluer for force <1 */
 		float r = CLAMP(force);

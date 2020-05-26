@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3603DFB2247DC28600916366 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AE8DBF1F5C1EF40072FD94 /* AppDelegate.m */; };
+		3603DFB3247DC28600916366 /* ShowTouchesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AE8DD21F5C1FA50072FD94 /* ShowTouchesView.m */; };
+		3603DFB4247DC28600916366 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 36AE8DBC1F5C1EF40072FD94 /* main.m */; };
+		3603DFBD247DC28600916366 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36AE8DC91F5C1EF40072FD94 /* LaunchScreen.storyboard */; };
+		3603DFBE247DC28600916366 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 36AE8DDD1F5C3C530072FD94 /* InfoPlist.strings */; };
+		3603DFBF247DC28600916366 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36AE8DC71F5C1EF40072FD94 /* Assets.xcassets */; };
 		363FD845218BB62200AB3CD6 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363FD844218BB62200AB3CD6 /* Accelerate.framework */; };
 		363FD847218BB63200AB3CD6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363FD846218BB63200AB3CD6 /* AudioToolbox.framework */; };
 		363FD849218BB63D00AB3CD6 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 363FD848218BB63D00AB3CD6 /* MediaPlayer.framework */; };
@@ -32,6 +38,7 @@
 		363FD854218BB93E00AB3CD6 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		363FD856218BCC5300AB3CD6 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		36AE8DB81F5C1EF40072FD94 /* ShowTouches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShowTouches.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3603DFC3247DC28600916366 /* ShowTouches (FOSS).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ShowTouches (FOSS).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		36AE8DBC1F5C1EF40072FD94 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		36AE8DBE1F5C1EF40072FD94 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		36AE8DBF1F5C1EF40072FD94 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -45,6 +52,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3603DFB5247DC28600916366 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36AE8DB51F5C1EF40072FD94 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -97,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				36AE8DB81F5C1EF40072FD94 /* ShowTouches.app */,
+				3603DFC3247DC28600916366 /* ShowTouches (FOSS).app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,6 +136,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3603DFB0247DC28600916366 /* ShowTouches (FOSS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3603DFC0247DC28600916366 /* Build configuration list for PBXNativeTarget "ShowTouches (FOSS)" */;
+			buildPhases = (
+				3603DFB1247DC28600916366 /* Sources */,
+				3603DFB5247DC28600916366 /* Frameworks */,
+				3603DFBB247DC28600916366 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "ShowTouches (FOSS)";
+			productName = ShowTouches;
+			productReference = 3603DFC3247DC28600916366 /* ShowTouches (FOSS).app */;
+			productType = "com.apple.product-type.application";
+		};
 		36AE8DB71F5C1EF40072FD94 /* ShowTouches */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 36AE8DCF1F5C1EF40072FD94 /* Build configuration list for PBXNativeTarget "ShowTouches" */;
@@ -147,6 +179,9 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Sijmen J. Mulder";
 				TargetAttributes = {
+					3603DFB0247DC28600916366 = {
+						DevelopmentTeam = FX2TJYZ3GE;
+					};
 					36AE8DB71F5C1EF40072FD94 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = FX2TJYZ3GE;
@@ -169,11 +204,22 @@
 			projectRoot = "";
 			targets = (
 				36AE8DB71F5C1EF40072FD94 /* ShowTouches */,
+				3603DFB0247DC28600916366 /* ShowTouches (FOSS) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3603DFBB247DC28600916366 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3603DFBD247DC28600916366 /* LaunchScreen.storyboard in Resources */,
+				3603DFBE247DC28600916366 /* InfoPlist.strings in Resources */,
+				3603DFBF247DC28600916366 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36AE8DB61F5C1EF40072FD94 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,6 +234,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3603DFB1247DC28600916366 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3603DFB2247DC28600916366 /* AppDelegate.m in Sources */,
+				3603DFB3247DC28600916366 /* ShowTouchesView.m in Sources */,
+				3603DFB4247DC28600916366 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		36AE8DB41F5C1EF40072FD94 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -221,6 +277,29 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3603DFC1247DC28600916366 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					NO_SONARPEN,
+				);
+				INFOPLIST_FILE = ShowTouches/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "nl.sjmulder.ShowTouches-9e68";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3603DFC2247DC28600916366 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PREPROCESSOR_DEFINITIONS = NO_SONARPEN;
+				INFOPLIST_FILE = ShowTouches/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "nl.sjmulder.ShowTouches-9e68";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		36AE8DCD1F5C1EF40072FD94 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -266,10 +345,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/SonarPen/include\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/SonarPen\"";
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -316,10 +392,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/SonarPen/include\"";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = "\"$(SRCROOT)/SonarPen\"";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -329,7 +402,12 @@
 		36AE8DD01F5C1EF40072FD94 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SonarPen/include",
+				);
 				INFOPLIST_FILE = ShowTouches/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SonarPen",
@@ -342,7 +420,12 @@
 		36AE8DD11F5C1EF40072FD94 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SonarPen/include",
+				);
 				INFOPLIST_FILE = ShowTouches/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SonarPen",
@@ -355,6 +438,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3603DFC0247DC28600916366 /* Build configuration list for PBXNativeTarget "ShowTouches (FOSS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3603DFC1247DC28600916366 /* Debug */,
+				3603DFC2247DC28600916366 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		36AE8DB31F5C1EF40072FD94 /* Build configuration list for PBXProject "ShowTouches" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
