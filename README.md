@@ -2,7 +2,7 @@ Show Touches
 ============
 iPhone/iPad app that shows finger and pen touches.
 
-![Screenshot](Screenshots/iPhone%206s.png)
+![Screenshot](Screenshots/iPhone%206s%201x.png)
 
 Features:
  - Shows touch location, size, pressure, and (for Apple Pencil) pen
