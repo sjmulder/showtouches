@@ -154,7 +154,7 @@
 			};
 			buildConfigurationList = 36AE8DB31F5C1EF40072FD94 /* Build configuration list for PBXProject "ShowTouches" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
