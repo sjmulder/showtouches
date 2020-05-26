@@ -1,3 +1,5 @@
+/* Copyright (c) 2017-2020, Sijmen J. Mulder (see LICENSE.md) */
+
 #import "ShowTouchesView.h"
 #include <math.h>
 #import "WTSonarPenDriver.h"

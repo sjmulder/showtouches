@@ -1,2 +1,4 @@
+/* Copyright (c) 2017-2020, Sijmen J. Mulder (see LICENSE.md) */
+
 "CFBundleName" = "Aanrakingen";
 "NSMicrophoneUsageDescription" = "De koptelefoonaansluiting wordt gebruikt om met de SonarPen te communiceren, indien aangesloten.";

@@ -1,3 +1,5 @@
+/* Copyright (c) 2017-2020, Sijmen J. Mulder (see LICENSE.md) */
+
 #import "AppDelegate.h"
 #import "ShowTouchesView.h"
 
