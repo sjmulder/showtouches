@@ -11,6 +11,8 @@ Features:
  - SonarPen support (except not, see *FOSS edition* below)
  - No nonsense
 
+[**Show Touches** on the App Store (free)](https://apps.apple.com/us/app/show-touches/id1278763011)
+
 FOSS edition
 ------------
 This 'free and open source software' edition, released under the
